@@ -1,4 +1,4 @@
-
+var curdate = new Date();
 function randomnum(num)
 { 
     if(num.length==8)
@@ -49,10 +49,11 @@ document.querySelector("#sub").addEventListener("click",()=>
 });
 
 function Validate(d,m,y)
-{
-    if(y<2021)
-    {
-        if(m<=12){
+{   if((typeof d=="number")&&(typeof m=="number")&&(typeof y=="number")){
+
+    if(y<curdate.getFullYear())
+    { 
+           if(m<=12){
 
             if(m==2)
             {
@@ -110,10 +111,12 @@ function Validate(d,m,y)
            }
        }
     }
-      else{ alert("Invalid date");  
-            reset();
-            return false ;  }
-}
+    else
+    {
+        alert("Invalid date");
+        reset(); 
+        return false ; 
+    }}
     else
     {
         alert("Invalid date");
@@ -121,7 +124,13 @@ function Validate(d,m,y)
         return false ; 
     }
 }
-
+else
+{
+    alert("Invalid date");  
+    reset(); 
+    return false ;
+}
+}
 
 function reset()
 {
@@ -144,7 +153,7 @@ function calculate(d,m,y)
  if(y!=0)
  {
     
- var curdate = new Date();
+ 
   let lyc =0 
   if(m<=2)
   {
@@ -156,14 +165,21 @@ function calculate(d,m,y)
   }
  if((mon[m-1]-d)>=0)
  {
-     dday=mon[m-1]-d+1;
+     dday=(mon[m-1]-d)+1;
     // console.log(dday);
  }
  
  dyear = curdate.getFullYear() -(y+1);
  dday = (365*(dyear+1))-calday(m)+calday(curdate.getMonth())+dday+lyc+curdate.getDate();
  //console.log(dday);
- dmonth = dyear*12 + (12-m) + curdate.getMonth();
+ dmonth = dyear*12 + (12-m) + curdate.getMonth(); 
+ //console.log(dyear,(12-m),m,curdate.getMonth())
+ if(dmonth<0){
+
+    dmonth = 0;
+ }
+ 
+ 
 // console.log(dyear*12);
 // console.log((12-m));
  //console.log(curdate.getMonth());
@@ -193,7 +209,7 @@ function calculate(d,m,y)
        dyear++;
    }
  }
- 
+// console.log(dmonth);
  displaycontent(dyear,dmonth,dday,dmin,dsec,dmil);
  }
  
