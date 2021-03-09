@@ -73,6 +73,14 @@
         margin-top: 65px;
     
     }
+    #sub:focus
+    {
+        outline: none;
+    }
+    #randomnum:focus
+    {
+        outline:none;
+    }
 </style>
 <body>
     <div class="container-fluid row col-12 " id="heading">
@@ -84,7 +92,7 @@
       <div class="container-fluid row col-12" id="dob">
       <label for="date" style="align-self: center;margin-left: 250px;">Enter your birth of data :   </label>
       <input type="text" id="date" placeholder="dd/mm/yyyy" style="height: 30px; align-self: center;">
-       <button id ="sub">Calculate</button> </div>
+       <button id ="sub">Calculate</button><span style="font-size: 20px;color: red;align-self: center;">*(DOB should be less than year 2021)</span></div>
        <div class="container-fluid row " style="background-color: wheat; height: 480px;">
            <div class="offset-2 col-8" id="table"> 
        <table >
